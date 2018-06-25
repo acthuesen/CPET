@@ -6,11 +6,11 @@ import os
 import sys
 sys._enablelegacywindowsfsencoding() #If your filepath includes special chars like æ,ø,å
 
-										###DIRECTORY AND FILENAMES####
+###DIRECTORY AND FILENAMES####
 d = 'YOURDIRECTORY'
 fn = os.path.join(d, 'YOURFILE.xlsx'))
 
-										###CREATE TIMESERIES FOR MERGING###
+###CREATE TIMESERIES FOR MERGING###
 #Define starts and stops and interval size
 tstart = datetime(2000, 1, 1, 0, 0, 0) 
 tstop = datetime(2000, 1, 1, 0, 30, 0) #this is 30 mins
@@ -26,7 +26,7 @@ tdf['t'] = times
 tdf['tdt'] = pd.to_datetime(tdf['t'], format='%H:%M:%S')
 tdf = tdf.set_index('tdt')
 
-										###IMPORT, CLEAN, AND AGGREGATE DATA###
+###IMPORT, CLEAN, AND AGGREGATE DATA###
 full_data = pd.read_excel(fn)
 #Extract ID and date, and height and weight, store as values
 ID = full_data.columns[1]
@@ -78,7 +78,7 @@ HR_max = eagg_vdat['HR'].max()
 ftnlvl = VO2_20s_max/wt
 bmi = wt/(ht/100)**2
 
-										###ADD CALCULATED VALUES TO RESULTS SHEET###
+###ADD CALCULATED VALUES TO RESULTS SHEET###
 rfn = os.path.join(d, 'YOURRESULTFILE.xlsx')
 wb = op.load_workbook(rfn)
 ws = wb.active
