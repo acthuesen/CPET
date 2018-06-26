@@ -6,8 +6,6 @@ from datetime import date, datetime, timedelta, time
 from dateutil.relativedelta import relativedelta
 import openpyxl as op
 import os
-import glob
-import shutil
 import xlrd
 import csv
 import sys
